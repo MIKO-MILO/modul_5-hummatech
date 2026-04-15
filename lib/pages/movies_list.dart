@@ -49,7 +49,7 @@ class _MoviesListState extends State<MoviesList> {
                 fit: BoxFit.cover,
               ),
               title: Text(movies[posisition].title),
-              subtitle: Text('Rating = ${movies[posisition].voteAverage}'),
+              subtitle: Text('Rating ${movies[posisition].voteAverage.toStringAsFixed(1)}'),
               onTap: () {
                 MaterialPageRoute route = MaterialPageRoute(
                   builder: (context) => MovieDetail(movies[posisition]),

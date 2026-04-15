@@ -5,7 +5,7 @@ class MovieDetail extends StatelessWidget {
   final Movie movie;
   final String imgPath = 'https://image.tmdb.org/t/p/w500';
 
-  MovieDetail(this.movie);
+  const MovieDetail(this.movie, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +24,51 @@ class MovieDetail extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(16),
-                height: MediaQuery.of(context).size.height / 1.5,
+                // padding: EdgeInsets.all(16),
+                height: MediaQuery.of(context).size.height / 1.4,
                 child: Image.network(path),
               ),
-              
+
               Container(
-                child: Text(movie.overview),
+                alignment: Alignment.centerLeft,
                 padding: EdgeInsets.only(left: 16, right: 16),
-              )
+                child: Text(
+                  movie.title,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+              ),
+
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(left: 16, right: 16),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: const Color.fromARGB(255, 253, 233, 60),
+                      size: 24,
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      movie.voteAverage.toStringAsFixed(1),
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+
+              Container(
+                padding: EdgeInsets.only(
+                  left: 16,
+                  right: 16,
+                  top: 16,
+                  bottom: 16,
+                ),
+                child: Text(movie.overview, style: TextStyle(fontSize: 16)),
+              ),
             ],
           ),
-        )
+        ),
       ),
     );
   }
